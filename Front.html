@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Application</title>
+  <link rel="stylesheet" href="./style.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+</head>
+
+<body class="body">
+  <header>
+    <nav class="navlink  navbar navbar-expand-lg bg-body-tertiary">
+      <div class=" container-fluid">
+        <div class="navbar-brand"> <img class=" imgaa" src="./Aasets/Image/logo2.png" alt=""></div>
+        <button class=" navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+              <button class="sup navbar-brand ">Register Student Account</button>
+            
+            </li>
+          <li class="nav-item">
+            <button class=" home nav-link active" aria-current="page">Home</button>
+            <button class=" home2 nav-link active" aria-current="page">Home</button>
+          </li>
+            <li class="nav-item dropdown1">
+              <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">Setting</a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><button id="showUsersBtn" class="dropdown-item">Show All Users</button></li>
+                <li><button id="challanfee" class="dropdown-item">challanfee</button></li>
+                <li><button class="logout dropdown-item  ">logout</button></li>
+                <li><button id="logout1" class=" dropdown-item  ">1logout</button></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <div class="login-card">
+      <h1><img class=" imga" src="./Aasets/Image/logo2.png" alt=""></h1>
+      <div class="card-heading">
+        <h1>WelCome</h1>
+        <!-- <h1>Create Student Account</h1> -->
+      </div>
+      <div class="LSbtn">
+        <button class="Ln">Login</button>
+      </div>
+      <form class="logform form " action="" method="POST">
+        <input type="text" type="email" type="number" name="username" name="email" placeholder="Username/@email/Number">
+        <input type="password" name="Lpassword" placeholder="Password?">
+        <button class="loginaccount" type="submit">Login</button>
+        <!-- <div class="FPACbtns">
+      <a href="">Forget Password?</a>
+      <a  class="atrisig" href="">Don't have an acc?</a>
+
+  </div> -->
+      </form>
+
+
+    </div>
+
+
+  </main>
+  <section class="RSA">
+
+    <form class="sigform form ">
+      <input type="text" name="Firstname" placeholder="Student First Name">
+      <input type="text" name="midname" placeholder="Student Mid Name">
+      <input type="text" name="Fathername" placeholder="S/O">
+      <input type="file" id="profileImage" name="profileImage" accept="image/*">
+      <input type="date" name="dob" placeholder="Date of Birth">
+      <select name="gender">
+        <option value="" disabled selected>Select Gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+      <select name="program">
+        <option value="" disabled selected>Select Program</option>
+        <option value="cs">Computer Science</option>
+        <option value="bba">Business Administration</option>
+        <option value="eng">Engineering</option>
+        <option value="bio">Biology</option>
+      </select>
+      <textarea name="address" rows="3" placeholder="Enter your address"></textarea>
+      <input type="text" name="cnic" placeholder="CNIC / National ID">
+      <input type="email" name="email" placeholder=" exp@gmail.com">
+      <input type="password" name="passField" placeholder="password">
+      <input type="password" name="repassword" placeholder="Enter password">
+      <input type="number" name="Contactnumber" placeholder=" Contact Number">
+      <input type="number" name="id" placeholder="Student i'd">
+      <button name="Createaccount" type="submit">Create Account</button>
+    </form>
+
+  </section>
+  <section id="section1">
+    <div class="challan">
+      <div class="header">
+        <div>
+          <div class="title">UNIVERSITY OF KOHSAR
+
+          </div>
+          <div>ONLINE ADMISSION ( )</div>
+          <small>[]</small>
+        </div>
+        <div class="logos">
+          <div class="logo-box hbl"></div>
+          <div class="logo-box ubl"></div>
+        </div>
+      </div>
+
+      <table>
+        <tr>
+          <th>1Bill Code:</th>
+          <td id="billcd">____________________</td>
+          <th>Challan/PV No.:</th>
+          <td id="chalno"></td>
+        </tr>
+        <tr>
+          <th>Name:</th>
+          <td id="stnm"></td>
+          <th>Due Date:</th>
+          <td id="duedate"></td>
+        </tr>
+        <tr>
+          <th>Father Name:</th>
+          <td id="Ftn"></td>
+          <th>Session:</th>
+          <td id="session"></td>
+        </tr>
+        <tr>
+          <th>Test Category:</th>
+          <td id="testctg"></td>
+          <th>Test City:</th>
+          <td id="test city"></td>
+        </tr>
+        <tr>
+          <th>Head Code:</th>
+          <td id="headCode"></td>
+          <th>Fee Amount:</th>
+          <td id="feeamount">Rs. </td>
+        </tr>
+        <tr>
+          <th>Amount in Words:</th>
+          <td id="Amountinwrd" colspan="3"></td>
+        </tr>
+      </table>
+
+      <div class="footer">
+        IT IS MANDATORY TO UPLOAD DEPOSITED FEE SLIP TILL DUE DATE ON THE ADMISSIONS PORTAL
+      </div>
+      <button id="downloadChallan">Download Challan</button>
+    </div>
+
+  </section>
+
+  <section class="section2">
+    <div id="sidebar" class="sidebar">
+      <div  class="profile"> 
+        <img   id="profilePic"  class="img-thumbnail" src="" alt="profile">
+        <h3 id="studentName" >std name</h3>
+        <p id="studentEmail" ></p>
+      </div>
+      <ul class="menu">
+        <li id="Dashboard" class="active">Dashboard</li>
+        <li>Notifications</li>
+        <li>Progress</li>
+        <li>Grades</li>
+        <li>Calendar</li>
+        <li>Resources</li>
+        <li>Settings</li>
+      </ul>
+    </div> <!-- Main Content -->
+    <div id="content" class="content">
+      <div class="header">Student Overview</div>
+      <div class="grid"> <!-- Left Section -->
+        <div>
+          <div class="card performance">
+            <div class="circle">Top 20%</div>
+            <p>Your performance</p>
+          </div>
+          <div class="card grades" style="margin-top:20px;">
+            <h3>Recent Grades</h3>
+            <div class="grade-item"> <span>Attendance</span> <span class="atdnc grade green">7.1</span> </div>
+            <div class="grade-item"> <span>Projects</span> <span class="grade green">6.3</span> </div>
+            <div class="grade-item"> <span>xyz</span> <span class="grade green">xyz</span> </div>
+            <div class="grade-item"> <span>xyz</span> <span class="grade red">xyz</span> </div>
+          </div>
+        </div> <!-- Right Section -->
+        <div>
+          <div class="card notifications">
+            <div class="notification"><strong>General Alert:</strong> Webtest #5 is now unlocked.</div>
+            <div class="notification"><strong>General Alert:</strong> Congratulations, you’ve now reached the top 20%!
+            </div>
+            <div class="notification"><strong>Sgt van Antwerp:</strong> Please revise Assignment #13.</div> <a href="#"
+              class="btn">View Older Notifications</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="allUsersData" style="display:none; padding:20px;">
+    <h2>All Student </h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Firstname</th>
+          <th>Midname</th>
+          <th>Fathername</th>
+          <th>Email</th>
+          <th>Contact</th>
+          <th>CNIC</th>
+          <th>ID</th>
+          <th>Program</th>
+          <th>Gender</th>
+          <th>DOB</th>
+        </tr>
+      </thead>
+      <tbody id="usersTableBody">
+
+      </tbody>
+    </table>
+  </section>
+
+
+
+
+
+
+
+
+  <script src="./logic.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+
+</body>
+
+</html>
