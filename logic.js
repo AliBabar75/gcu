@@ -239,7 +239,7 @@ window.addEventListener("load", () => {
 
     }
     else if (loginStatus === "true") {
-        document.body.style.backgroundColor = 'white';
+        // document.body.style.backgroundColor = 'white';
         main.style.display = 'none';
         logout.style.display = 'block';
         navlink.style.display = 'block';
@@ -386,6 +386,8 @@ alert('Admin ACC')
                 let showUsersBtn = document.getElementById("showUsersBtn");
                 showUsersBtn.style.display = "none";
 
+
+                
 let userKey = localStorage.getItem("loggedInUserKey");
     let DashData = JSON.parse(localStorage.getItem(userKey));
 if (DashData) {
