@@ -421,18 +421,6 @@ if (DashData) {
         sup.style.display = 'none'
 home.style.display = 'none'
 
-let userKey = localStorage.getItem("loggedInUserKey");
-    let DashData = JSON.parse(localStorage.getItem(userKey));
-if (DashData) {
-    // Profile pic
-    document.getElementById("profilePic").src = DashData.profileImage;
-
-    // Name
-    document.getElementById("studentName").textContent = DashData.Firstname + " " + (DashData.Midname || "");
-
-    // Email
-    document.getElementById("studentEmail").textContent = DashData.email;
-}
 
 challanfee.addEventListener('click', (e) => {
     e.preventDefault();
@@ -605,15 +593,32 @@ if(showUsersBtn){
     });
 }
 
+let uploadInput = document.getElementById("uploadPic");
+
+uploadInput.addEventListener("change", function (event) {
+    let file = event.target.files[0];
+    let reader = new FileReader();
+
+    reader.onload = function (e) {
+        let base64Image = e.target.result;
+
+        // Save in localStorage with user data
+        let userKey = localStorage.getItem("loggedInUserKey");
+        let DashData = JSON.parse(localStorage.getItem(userKey)) || {};
+
+        DashData.profileImage = base64Image;
+
+        localStorage.setItem(userKey, JSON.stringify(DashData));
+
+        // Show image instantly
+        document.getElementById("profilePic").src = base64Image;
+    };
+
+    reader.readAsDataURL(file);  // Convert to Base64
+});
 let userKey = localStorage.getItem("loggedInUserKey");
-    let DashData = JSON.parse(localStorage.getItem(userKey));
-if (DashData) {
-    // Profile pic
-    document.getElementById("profilePic").src = DashData.profileImage ;
+let DashData = JSON.parse(localStorage.getItem(userKey));
 
-    // Name
-    document.getElementById("studentName").textContent = DashData.Firstname + " " + (DashData.Midname || "");
-
-    // Email
-    document.getElementById("studentEmail").textContent = DashData.email;
+if (DashData && DashData.profileImage) {
+    document.getElementById("profilePic").src = DashData.profileImage;
 }

@@ -626,3 +626,33 @@ transition: 0.2s;
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+#profilePic {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;       /* Circle shape */
+  object-fit: cover;        /* Image crop karega */
+  border: 3px solid #94113b; /* Border color */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Soft shadow */
+  margin-top: 10px;
+  transition: transform 0.3s ease;
+}
+
+#profilePic:hover {
+  transform: scale(1.05); /* Thoda zoom on hover */
+}
+#uploadPic {
+  /* margin-top: 15px; */
+  /* padding: 8px; */
+  /* border: 2px solid #94113b; */
+  border-radius: 10px;
+  /* background-color: #f88d03; */
+  /* color: white; */
+  font-weight: bold;
+  
+  cursor: pointer;
+}
+
+#uploadPic:hover {
+  background-color: #d97902;
+}
