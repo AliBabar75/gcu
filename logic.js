@@ -16,6 +16,10 @@ RSA.style.display = 'none'
 
 let home = document.getElementsByClassName('home')[0]
 let home2 = document.getElementsByClassName('home2')[0]
+let atnsect=document.getElementById('attendance-sec')
+atnsect.classList.add('atnsec')
+let atnbtn=document.getElementById('attendance-btn')
+
 
 if (logincard) {
     let Ln = document.getElementsByClassName('Ln')[0]
@@ -50,15 +54,16 @@ let sup = document.getElementsByClassName('sup')[0]
             sigform.style.display = 'block'
             let RSA = document.getElementsByClassName('RSA')[0]
             RSA.style.display = 'flex'
-            
+            atnsect.classList.add('atnsec')
         })
         document.getElementById("allUsersData").style.display = "none";
+atnsect.classList.add('atnsec')
 
 })
+
 home2.addEventListener('click', function (h) {
     h.preventDefault;
     navlink.style.display = 'block'
-    // document.body.style.backgroundColor = 'black'
     let section1 = document.getElementById('section1')
     section1.style.display = 'none'
     let content = document.getElementById('content')
@@ -66,24 +71,9 @@ home2.addEventListener('click', function (h) {
     let sidebar = document.getElementById('sidebar')
     sidebar.style.display = 'flex'
     sidebar.style.marginTop = '10px'
-
+    atnsect.classList.add('atnsec')
     let sigform = document.getElementsByClassName('sigform')[0]
             sigform.style.display = 'none'
-
-//yea check krna hai uth k
-})
-home2.addEventListener('click', function (h) {
-    h.preventDefault;
-    navlink.style.display = 'block'
-    // document.body.style.backgroundColor = 'black'
-    let section1 = document.getElementById('section1')
-    section1.style.display = 'none'
-    let content = document.getElementById('content')
-    content.style.display = 'none'
-    let sidebar = document.getElementById('sidebar')
-    sidebar.style.display = 'flex'
-    
-    
     challanfee.disabled = false;
     challanfee.addEventListener('click', (e) => {
     e.preventDefault();
@@ -226,6 +216,8 @@ window.addEventListener("load", () => {
         navlink.style.display = 'block';
         section1.style.display = 'none';
         section2.style.display = 'none';
+        
+        // atnsect.classList.remove('atnsec')
         home2.style.display = 'none';
         let sup = document.getElementsByClassName('sup')[0]
         sup.style.display = 'block'
@@ -234,8 +226,14 @@ window.addEventListener("load", () => {
             sigform.style.display = 'block'
             let RSA = document.getElementsByClassName('RSA')[0]
             RSA.style.display = 'flex'
+            atnsect.classList.add('atnsec')
+
         })
- 
+ atnbtn.addEventListener('click',function () {
+    atnsect.classList.remove('atnsec')
+ let RSA = document.getElementsByClassName('RSA')[0]
+            RSA.style.display = 'none'
+ })
 
     }
     else if (loginStatus === "true") {
@@ -244,6 +242,7 @@ window.addEventListener("load", () => {
         logout.style.display = 'block';
         navlink.style.display = 'block';
         section1.style.display = 'none';
+        atnbtn.classList.add('atnsec')
          document.getElementById("allUsersData").style.display = "none";
         section2.style.display = 'block';
         let content = document.getElementById('content')
@@ -361,6 +360,11 @@ loginaccount.addEventListener('click', function (e) {
         logform.style.display = 'block'
         let sup = document.getElementsByClassName('sup')[0]
         sup.style.display = 'block'
+        atnbtn.addEventListener('click',function () {
+    atnsect.classList.remove('atnsec')
+ let RSA = document.getElementsByClassName('RSA')[0]
+            RSA.style.display = 'none'
+ })
 home2.style.display='none'
 alert('Admin ACC')
         return;
@@ -374,7 +378,7 @@ alert('Admin ACC')
         if (key.startsWith("UserData")) {
             let user = JSON.parse(localStorage.getItem(key));
 
-            if (user.email === username && user.passField === Lpassword || user.id === username) {
+            if (user.email === username && user.passField === Lpassword || user.id === username && user.passField === Lpassword ) {
                 loginSuccess = true;
                 localStorage.setItem("loggedInUserKey", key);
                 let section2 = document.getElementsByClassName('section2')[0]
@@ -385,8 +389,8 @@ alert('Admin ACC')
                 document.getElementById("allUsersData").style.display = "none";
                 let showUsersBtn = document.getElementById("showUsersBtn");
                 showUsersBtn.style.display = "none";
-
-
+atnsect.classList.add('atnsec')
+atnbtn.classList.add('atnsec')
                 
 let userKey = localStorage.getItem("loggedInUserKey");
     let DashData = JSON.parse(localStorage.getItem(userKey));
@@ -493,6 +497,7 @@ sup.addEventListener('click', function () {
     let RSA = document.getElementsByClassName('RSA')[0]
     RSA.style.display = 'flex'
     document.getElementById("allUsersData").style.display = "none";
+    atnsect.classList.add('atnsec')
 })
 
 
@@ -513,6 +518,7 @@ logout.addEventListener('click', function (f) {
 let sup = document.getElementsByClassName('sup')[0]
 sup.style.display = 'none'
 document.getElementById("allUsersData").style.display = "none";
+atnsect.classList.add('atnsec')
 })
 
 
@@ -538,6 +544,7 @@ sigform.style.display = 'none'
     let sup = document.getElementsByClassName('sup')[0]
 sup.style.display = 'none'
     document.getElementById("allUsersData").style.display = "none";
+    atnsect.classList.add('atnsec')
 })
 
 let Dashboard = document.getElementById('Dashboard')
@@ -622,3 +629,204 @@ let DashData = JSON.parse(localStorage.getItem(userKey));
 if (DashData && DashData.profileImage) {
     document.getElementById("profilePic").src = DashData.profileImage;
 }
+
+
+let holidays = []; // holidays store karne ke liye
+
+  function addHoliday() {
+    let day = parseInt(document.getElementById("holidayDay").value);
+    if (!isNaN(day) && day >= 1 && day <= 30 && !holidays.includes(day)) {
+      holidays.push(day);
+      alert("Holiday added for day " + day);
+      showAttendanceTable(); // refresh after adding holiday
+    }
+  }
+
+  function calculateAttendancePercentage(userId, selectedMonth) {
+    let totalDays = 30 - holidays.length;
+    let presentDays = 0;
+
+    for (let day = 1; day <= 30; day++) {
+      if (holidays.includes(day)) continue; // skip holidays
+      let attendanceKey = `Attendance_${selectedMonth}_${userId}_day${day}`;
+      if (localStorage.getItem(attendanceKey) === "present") {
+        presentDays++;
+      }
+    }
+
+    let percentage = totalDays > 0 ? Math.round((presentDays / totalDays) * 100) : 0;
+    return percentage;
+  }
+// ATTENDANCE VALUE INSERT
+  function updateSidebarAttendance(userId) {
+    let selectedMonth = document.getElementById("monthSelect").value;
+    let percentage = calculateAttendancePercentage(userId, selectedMonth);
+
+    let atdncSpan = document.querySelector(".atdnc");
+    if (atdncSpan) {
+      atdncSpan.textContent = percentage + "%";
+    }
+  }
+
+  function showAttendanceTable() {
+    let selectedMonth = document.getElementById("monthSelect").value;
+    let tableBody = document.getElementById("attendanceTableBody");
+    tableBody.innerHTML = "";
+
+    // reset header (to avoid duplicate days)
+    let headerRow = document.getElementById("headerRow");
+    headerRow.innerHTML = `
+      <th class="header-cell">User ID</th>
+      <th class="header-cell">Name</th>
+    `;
+    for (let day = 1; day <= 30; day++) {
+      let th = document.createElement("th");
+      th.textContent = day;
+      if (holidays.includes(day)) {
+        th.style.background = "gray"; // highlight holiday
+      }
+      headerRow.appendChild(th);
+    }
+
+    // LocalStorage se users uthao
+    for (let i = 0; i < localStorage.length; i++) {
+      let key = localStorage.key(i);
+      if (key.startsWith("UserData")) {
+        let user = JSON.parse(localStorage.getItem(key));
+        let row = document.createElement("tr");
+        row.className = "attendance-row";
+
+        row.innerHTML = `
+          <td>${user.id}</td>
+          <td>${user.Firstname} ${user.Midname} ${user.Fathername}</td>
+        `;
+
+        for (let day = 1; day <= 30; day++) {
+          let td = document.createElement("td");
+          if (holidays.includes(day)) {
+            td.textContent = "H"; // holiday mark
+            td.style.background = "gray";
+          } else {
+            let checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.className = "attendance-checkbox";
+
+            let attendanceKey = `Attendance_${selectedMonth}_${user.id}_day${day}`;
+
+            if (localStorage.getItem(attendanceKey) === "present") {
+              checkbox.checked = true;
+            }
+
+            checkbox.addEventListener("change", () => {
+              if (checkbox.checked) {
+                localStorage.setItem(attendanceKey, "present");
+              } else {
+                localStorage.removeItem(attendanceKey);
+              }
+              updateSidebarAttendance(user.id); // update sidebar on change
+            });
+
+            td.appendChild(checkbox);
+          }
+          row.appendChild(td);
+        }
+
+        tableBody.appendChild(row);
+
+        // Sidebar attendance update for this user
+        updateSidebarAttendance(user.id);
+      }
+    }
+
+    document.getElementById("attendanceSection").style.display = "block";
+  }
+
+  function generateMonthDropdown() {
+    let monthSelect = document.getElementById("monthSelect");
+    monthSelect.innerHTML = ""; // avoid duplicates
+    let now = new Date();
+    let currentYear = now.getFullYear();
+
+    let months = [
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+
+    months.forEach((monthName, index) => {
+      let monthValue = `${currentYear}-${String(index + 1).padStart(2, "0")}`;
+      let option = document.createElement("option");
+      option.value = monthValue;
+      option.textContent = `${monthName} ${currentYear}`;
+      if (index === now.getMonth()) {
+        option.selected = true;
+      }
+      monthSelect.appendChild(option);
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    generateMonthDropdown();
+    showAttendanceTable();
+  });
+
+  document.getElementById("monthSelect").addEventListener("change", showAttendanceTable);
+
+let showatdnc = document.getElementById('showatdnc');
+
+showatdnc.addEventListener('click', function () {
+  let content = document.getElementById('content');
+  let sidebar = document.getElementById('sidebar');
+  let allUsersData = document.getElementById('allUsersData');
+  let cardperformance = document.getElementById('card-performance');
+  let cardnotifications = document.getElementById('card-notifications');
+
+  if (content) content.style.display = 'block';
+  if (sidebar) sidebar.style.display = 'none';
+  if (allUsersData) allUsersData.style.display = 'none';
+  if (cardperformance) cardperformance.style.display = 'none';
+  if (cardnotifications) cardnotifications.style.display = 'none';
+});
+
+
+// 
+
+// ------------------- Passed Students Show -------------------
+function showPassedStudents() {
+  let selectedMonth = document.getElementById("monthSelect").value;
+  let passedBody = document.getElementById("passedStudentsBody");
+  passedBody.innerHTML = "";
+
+  for (let i = 0; i < localStorage.length; i++) {
+    let key = localStorage.key(i);
+
+    if (key.startsWith("UserData")) {
+      let user = JSON.parse(localStorage.getItem(key));
+      let percentage = calculateAttendancePercentage(user.id, selectedMonth);
+
+      if (percentage > 60) {
+        let row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${user.id}</td>
+          <td>${user.Firstname} ${user.Midname} ${user.Fathername}</td>
+          <td>${percentage}%</td>
+        `;
+        passedBody.appendChild(row);
+      }
+    }
+  }
+
+  document.getElementById("passedStudentsSection").style.display = "block";
+}
+
+// ------------------- Allow button Bind -------------------
+document
+  .getElementById("allowAttendanceBtn")
+  .addEventListener("click", showPassedStudents);
+
+// ------------------- PDF Download -------------------
+document.getElementById("downloadPassedPDF").addEventListener("click", () => {
+  const a = document.createElement("a");
+  a.href = "Application/GOVERNMENT COLLEGE UNIVERSITY HYDERABAD.pdf"; // 👈 apni PDF ka path
+  a.download = "AdmitCard.pdf";  // 👈 jo naam se download hoga
+  a.click();
+});

@@ -7,6 +7,7 @@
   <title>Application</title>
   <link rel="stylesheet" href="./style.css">
   
+  
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
   integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
 </head>
@@ -24,7 +25,10 @@
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <button class="sup navbar-brand ">Register Student Account</button>
-            
+          </li>
+          <li>
+            <button id="attendance-btn" >Attendance</button>
+
           </li>
           <li class="nav-item">
             <button class=" home nav-link active" aria-current="page">Home</button>
@@ -46,7 +50,7 @@
       </div>
     </nav>
   </header>
-  <main>
+  <main class="main1" >
     <div class="login-card">
       <h1><img class=" imga" src="./Aasets/Image/logo2.png" alt=""></h1>
       <div class="card-heading">
@@ -178,30 +182,30 @@
         <li>Progress</li>
         <li>Grades</li>
         <li>Calendar</li>
-        <li>Resources</li>
-        <li>Settings</li>
+        <li><button id="showatdnc" >attendance</button></li>
+        
       </ul>
     </div> <!-- Main Content -->
     <div id="content" class="content">
       <div class="header">Student Overview</div>
       <div class="grid"> <!-- Left Section -->
         <div>
-          <div class="card performance">
+          <div id="card-performance" class="card performance">
             <div class="circle">Top 20%</div>
             <p>Your performance</p>
           </div>
-          <div class="card grades" style="margin-top:20px;">
+          <div id="card-grades" class="card grades" style="margin-top:20px;">
             <h3>Recent Grades</h3>
-            <div class="grade-item"> <span>Attendance</span> <span class="atdnc grade green">7.1</span> </div>
+            <div class="grade-item"> <span>Attendance</span> <span class="atdnc grade green"></span> </div>
             <div class="grade-item"> <span>Projects</span> <span class="grade green">6.3</span> </div>
             <div class="grade-item"> <span>xyz</span> <span class="grade green">xyz</span> </div>
             <div class="grade-item"> <span>xyz</span> <span class="grade red">xyz</span> </div>
           </div>
         </div> <!-- Right Section -->
         <div>
-          <div class="card notifications">
+          <div id="card-notifications"  class="card notifications">
             <div class="notification"><strong>General Alert:</strong> Webtest #5 is now unlocked.</div>
-            <div class="notification"><strong>General Alert:</strong> Congratulations, you’ve now reached the top 20%!
+            <div class="notification"><strong>General Alert:</strong> Congratulations, you've now reached the top 20%!
             </div>
             <div class="notification"><strong>Sgt van Antwerp:</strong> Please revise Assignment #13.</div> <a href="#"
               class="btn">View Older Notifications</a>
@@ -234,10 +238,44 @@
     </table>
   </section>
 
+<section id="attendance-sec" >
+  <h2 class="attendance-title">Monthly Attendance</h2>
+<label for="monthSelect">Select Month:</label>
+<select id="monthSelect"></select>
+  <div id="holidayContainer">
+  <input type="number" id="holidayDay" placeholder="Enter day (e.g. 14)" />
+  <button onclick="addHoliday()">Add Holiday</button>
+</div>
+<div id="attendanceSection" class="attendance-section" >
+  <table class="attendance-table">
+    <thead>
+      <tr   id="headerRow" class="attendance-header">
+        <th  class="header-cell">User ID</th>
+        <th class="header-cell">Name</th>
+      </tr>
+    </thead>
+    <tbody id="attendanceTableBody" class="attendance-body"></tbody>
+  </table>
+</div>
+</section>
 
 
-
-
+<section class="examform">
+  <div id="passedStudentsSection" style="display:none;">
+  <h2>Students Above 60% Attendance</h2>
+  <table id="passedStudentsTable" border="1">
+    <thead>
+      <tr>
+        <th>User ID</th>
+        <th>Name</th>
+        <th>Attendance %</th>
+      </tr>
+    </thead>
+    <tbody id="passedStudentsBody"></tbody>
+  </table>
+  <button id="downloadPassedPDF">Download PDF</button>
+</div>
+</section>
 
 
 
