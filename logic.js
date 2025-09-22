@@ -789,8 +789,6 @@ showatdnc.addEventListener('click', function () {
 
 
 // 
-
-// ------------------- Passed Students Show -------------------
 function showPassedStudents() {
   let selectedMonth = document.getElementById("monthSelect").value;
   let passedBody = document.getElementById("passedStudentsBody");
@@ -803,7 +801,7 @@ function showPassedStudents() {
       let user = JSON.parse(localStorage.getItem(key));
       let percentage = calculateAttendancePercentage(user.id, selectedMonth);
 
-      if (percentage > 60) {
+      if (percentage >= 60) {
         let row = document.createElement("tr");
         row.innerHTML = `
           <td>${user.id}</td>
@@ -811,22 +809,22 @@ function showPassedStudents() {
           <td>${percentage}%</td>
         `;
         passedBody.appendChild(row);
+        document.getElementById("downloadPassedPDF").style.di
       }
     }
   }
 
+  // Section visible 
   document.getElementById("passedStudentsSection").style.display = "block";
 }
-
-// ------------------- Allow button Bind -------------------
-document
-  .getElementById("allowAttendanceBtn")
-  .addEventListener("click", showPassedStudents);
-
-// ------------------- PDF Download -------------------
 document.getElementById("downloadPassedPDF").addEventListener("click", () => {
   const a = document.createElement("a");
-  a.href = "Application/GOVERNMENT COLLEGE UNIVERSITY HYDERABAD.pdf"; // 👈 apni PDF ka path
-  a.download = "AdmitCard.pdf";  // 👈 jo naam se download hoga
+  a.href = "GOVERNMENT COLLEGE UNIVERSITY HYDERABAD.pdf"; // 👈 yaha apni file ka path
+  a.download = "AdmitCard.pdf";  // 👈 naam jo download hote waqt show hoga
   a.click();
 });
+
+  document.getElementById("showPassedBtn").addEventListener("click", showPassedStudents);
+
+
+  

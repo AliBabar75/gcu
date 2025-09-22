@@ -7,7 +7,21 @@
   body{
       background-image:linear-gradient(to right, #f88d03 0%, #f88d03 100%);    
     }
+.showUsersBtn{
+width: 104px;
+    }
+.navbar button {
+  background: none;
+  border: none;
+color:#fff;
 
+}
+.navbar ul,li{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
 .atnsec{
   display: none;
 }
@@ -102,10 +116,11 @@
 /*  */
 
 
-.sup {
+/* .sup {
   background: none;
   border: none;
-}
+
+} */
 
 /* Navbar text white */
 nav, 
@@ -653,16 +668,22 @@ transition: 0.2s;
   /* margin-top: 15px; */
   /* padding: 8px; */
   /* border: 2px solid #94113b; */
-  border-radius: 10px;
+  /* border-radius: 10px; */
   /* background-color: #f88d03; */
   /* color: white; */
-  font-weight: bold;
-  
+  /* font-weight: bold; */
+  width: 100px;
   cursor: pointer;
+  background:none;
 }
 
+.uploadPic input{
+  background:none;
+
+}
 #uploadPic:hover {
-  background-color: #d97902;
+  background:none;
+  
 }
 
 /* attend */
@@ -1004,3 +1025,7 @@ nav li:hover {
     text-align: center;
   }
 }
+
+
+
+

@@ -26,25 +26,28 @@
           <li class="nav-item">
             <button class="sup navbar-brand ">Register Student Account</button>
           </li>
-          <li>
+          <li class="nav-item" >
             <button id="attendance-btn" >Attendance</button>
+
+          </li>
+          <li class="nav-item" >
+            <button id="showPassedBtn" >showPassedBtn</button>
 
           </li>
           <li class="nav-item">
             <button class=" home nav-link active" aria-current="page">Home</button>
-            <button class=" home2 nav-link active" aria-current="page">Home</button>
           </li>
-          <li class="nav-item dropdown1">
-            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">Setting</a>
-                <ul class="dropdown-menu dropdown-menu-end">
-                  <li><button id="showUsersBtn" class="dropdown-item">Show All Users</button></li>
-                  <li><button id="challanfee" class="dropdown-item">challanfee</button></li>
-                  <li><input type="file" id="uploadPic"></li>
-                  <li><button class="logout dropdown-item  ">logout</button></li>
-                  <li><button id="logout1" class=" dropdown-item  ">logout</button></li>
-                </ul>
-              </li>
+          <li  class="nav-item" >
+            <button class=" home2 nav-link active" aria-current="page">Home</button>
+
+          </li>
+          <li class="nav-item" ><button id="showUsersBtn" class="showUsersBtn" >Show All Users</button></li>
+        
+            <li class="nav-item" ><button id="challanfee" >challanfee</button></li>
+            <li class="nav-item" ></li>
+            <li class="nav-item" ><button class="logout ">logout</button></li>
+            <li class="nav-item" ><button id="logout1" >logout</button></li>
+          
           </ul>
         </div>
       </div>
@@ -64,11 +67,7 @@
         <input type="text" type="email" type="number" name="username" name="email" placeholder="Username/@email/Number">
         <input type="password" name="Lpassword" placeholder="Password?">
         <button class="loginaccount" type="submit">Login</button>
-        <!-- <div class="FPACbtns">
-      <a href="">Forget Password?</a>
-      <a  class="atrisig" href="">Don't have an acc?</a>
-
-  </div> -->
+        
       </form>
 
 
@@ -177,9 +176,9 @@
         <p id="studentEmail" ></p>
       </div>
       <ul class="menu">
+        <li class="uploadPic" ><input   type="file" id="uploadPic"></li>
         <li id="Dashboard" class="active">Dashboard</li>
         <li>Notifications</li>
-        <li>Progress</li>
         <li>Grades</li>
         <li>Calendar</li>
         <li><button id="showatdnc" >attendance</button></li>
@@ -261,7 +260,7 @@
 
 
 <section class="examform">
-  <div id="passedStudentsSection" style="display:none;">
+  <div id="passedStudentsSection"  style="display: none;" >
   <h2>Students Above 60% Attendance</h2>
   <table id="passedStudentsTable" border="1">
     <thead>
