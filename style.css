@@ -665,26 +665,32 @@ transition: 0.2s;
   transform: scale(1.05); /* Thoda zoom on hover */
 }
 #uploadPic {
-  /* margin-top: 15px; */
-  /* padding: 8px; */
-  /* border: 2px solid #94113b; */
-  /* border-radius: 10px; */
-  /* background-color: #f88d03; */
-  /* color: white; */
-  /* font-weight: bold; */
-  width: 100px;
+  width: 90px;
   cursor: pointer;
   background:none;
 }
-
-.uploadPic input{
-  background:none;
-
+#studentEmail{
+  color: white;
 }
+
 #uploadPic:hover {
   background:none;
   
 }
+#uploadPic::-webkit-file-upload-button {
+  background: none;      /* background hatado */
+  border: none;          /* border bhi hatao */
+  color: white;          /* text ko white karo */
+  cursor: pointer;       /* cursor pointer banado */
+}
+
+#uploadPic::file-selector-button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
 
 /* attend */
 .attendance-title {

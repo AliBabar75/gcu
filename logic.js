@@ -216,7 +216,8 @@ window.addEventListener("load", () => {
         navlink.style.display = 'block';
         section1.style.display = 'none';
         section2.style.display = 'none';
-        
+        challanfee.style.display = 'none';
+        atnbtn.style.display = 'none';
         // atnsect.classList.remove('atnsec')
         home2.style.display = 'none';
         let sup = document.getElementsByClassName('sup')[0]
@@ -582,7 +583,16 @@ function showAllUsers() {
                 <td>${user.program}</td>
                 <td>${user.gender}</td>
                 <td>${user.dob}</td>
+                <td></td>
             `;
+            let input = document.createElement("input");
+input.type = "text";
+input.value="75%"
+input.style.width="30px"
+input.style.background="none"
+input.style.border="none"
+input.style.outline="none"
+row.lastElementChild.appendChild(input);
             tableBody.appendChild(row);
         }
     }

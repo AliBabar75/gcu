@@ -31,7 +31,7 @@
 
           </li>
           <li class="nav-item" >
-            <button id="showPassedBtn" >showPassedBtn</button>
+            <!-- <button id="showPassedBtn" >showPassedBtn</button> -->
 
           </li>
           <li class="nav-item">
@@ -176,12 +176,16 @@
         <p id="studentEmail" ></p>
       </div>
       <ul class="menu">
-        <li class="uploadPic" ><input   type="file" id="uploadPic"></li>
+        <li class="uploadPic" ><input type="file" id="uploadPic" style="display:none;">
+<label for="uploadPic" 
+       style="cursor:pointer;  background:none; color:white; border-radius:5px;">
+  Upload Pic
+</label></li>
         <li id="Dashboard" class="active">Dashboard</li>
         <li>Notifications</li>
         <li>Grades</li>
         <li>Calendar</li>
-        <li><button id="showatdnc" >attendance</button></li>
+        <li><button id="showatdnc" style="background: none; outline: none; border: none; color: white;"  >Attendance</button></li>
         
       </ul>
     </div> <!-- Main Content -->
@@ -229,6 +233,7 @@
           <th>Program</th>
           <th>Gender</th>
           <th>DOB</th>
+          <th>Attendance</th>
         </tr>
       </thead>
       <tbody id="usersTableBody">
@@ -259,7 +264,7 @@
 </section>
 
 
-<section class="examform">
+<!-- <section class="examform">
   <div id="passedStudentsSection"  style="display: none;" >
   <h2>Students Above 60% Attendance</h2>
   <table id="passedStudentsTable" border="1">
@@ -274,7 +279,7 @@
   </table>
   <button id="downloadPassedPDF">Download PDF</button>
 </div>
-</section>
+</section> -->
 
 
 
